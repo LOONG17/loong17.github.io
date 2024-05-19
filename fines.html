@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fine Calculator</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #1e1e1e;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            color: #ff9800;
+        }
+
+        label, select, button {
+            display: block;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        select, button {
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            font-size: 16px;
+        }
+
+        select {
+            background-color: #333333;
+            color: #ffffff;
+        }
+
+        button {
+            background-color: #ff9800;
+            color: #000000;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #e68a00;
+        }
+
+        #result {
+            text-align: center;
+            font-size: 18px;
+            margin-top: 20px;
+            color: #ff9800;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>MFP Fine Calculator</h1>
+
+    <form id="fineCalculator">
+        <label for="rank">Rank:</label>
+        <select id="rank">
+            <option value="Private - CPL">Private - CPL</option>
+            <option value="SGT - SSGT">SGT - SSGT</option>
+            <option value="WO (+CCSG)">WO (+CCSG)</option>
+        </select>
+
+        <label for="offense">Offense:</label>
+        <select id="offense">
+            <option value="Treason">Treason</option>
+            <option value="Conspiracy">Conspiracy</option>
+            <option value="Gunrunning">Gunrunning</option>
+            <option value="Murder & Looting">Murder & Looting</option>
+            <option value="Murder">Murder</option>
+            <option value="General Theft">General Theft</option>
+            <option value="Bounty Theft">Bounty Theft</option>
+            <option value="Insubordination">Insubordination</option>
+            <option value="Improper Hat/Mask">Improper Hat/Mask</option>
+            <option value="Improper Behavior">Improper Behavior</option>
+            <option value="Disrespect">Disrespect</option>
+            <option value="Intent">Intent</option>
+        </select>
+
+        <label for="offenseCount">Offense Count:</label>
+        <select id="offenseCount">
+            <option value="1">First Offense</option>
+            <option value="2">Second Offense</option>
+            <option value="3">Third Offense</option>
+        </select>
+
+        <button type="button" onclick="calculateFine()">Calculate Fine</button>
+    </form>
+
+    <h2 id="result"></h2>
+</div>
+
+<script>
+    const fines = {
+        "Private - CPL": {
+            "Treason": ["Dishonorable Discharge", "Bar"],
+            "Conspiracy": ["Dishonorable Discharge", "Bar"],
+            "Gunrunning": ["Dishonorable Discharge", "Bar"],
+            "Murder & Looting": ["800 Pound Fine", "1000 Pound/Log Fine", "Dishonorable Discharge"],
+            "Murder": ["400 Pound Fine", "600 Pound/Log Fine", "Dishonorable Discharge"],
+            "General Theft": ["400 Pound Fine", "600 Pound/Log Fine", "Dishonorable Discharge"],
+            "Bounty Theft": ["400 Pound Fine", "600 Pound/Log Fine", "Dishonorable Discharge"],
+            "Insubordination": ["50 Iron Ingots", "General Discharge", "Dishonorable Discharge"],
+            "Improper Hat/Mask": ["300 Pound Fine", "400 Pine Logs", "General Discharge", "Dishonorable Discharge"],
+            "Improper Behavior": ["300 Pound Fine", "400 Pine Logs", "General Discharge", "Dishonorable Discharge"],
+            "Disrespect": ["300 Pound Fine", "200 Pine Logs", "General Discharge", "Dishonorable Discharge"],
+            "Intent": ["300 Pound Fine", "200 Pine Logs", "General Discharge", "Dishonorable Discharge"]
+        },
+        "SGT - SSGT": {
+            "Treason": ["Bar"],
+            "Conspiracy": ["Dishonorable Discharge", "Bar"],
+            "Gunrunning": ["Dishonorable Discharge", "Bar"],
+            "Leeching": ["Dishonorable Discharge"],
+            "Murder & Looting": ["1500 Pound Fine", "2500 Pound/1200 Log Fine", "Dishonorable Discharge"],
+            "Murder": ["1000 Pound Fine", "2000 Pound/1000 Log Fine", "Dishonorable Discharge"],
+            "General Theft": ["1000 Pound Fine", "1500 Pound/800 Log Fine", "Dishonorable Discharge"],
+            "Bounty Theft": ["1000 Pound Fine", "1500 Pound/800 Log Fine", "Dishonorable Discharge"],
+            "Insubordination": ["100 Iron Ingots", "DD (2 Week Penal)", "Dishonorable Discharge"],
+            "Improper Hat/Mask": ["600 Pound Fine", "600 Pine Logs", "General Discharge", "Dishonorable Discharge"],
+            "Improper Behavior": ["600 Pound Fine", "600 Pine Logs", "General Discharge", "Dishonorable Discharge"],
+            "Disrespect": ["600 Pound Fine", "600 Pine Logs", "General Discharge", "Dishonorable Discharge"],
+            "Intent": ["600 Pound Fine", "600 Pine Logs", "General Discharge", "Dishonorable Discharge"]
+        },
+        "WO (+CCSG)": {
+            "Treason": ["Bar"],
+            "Conspiracy": ["Dishonorable Discharge", "Bar"],
+            "Gunrunning": ["Dishonorable Discharge", "Bar"],
+            "Leeching": ["Dishonorable Discharge"],
+            "Murder & Looting": ["2250 Pound Fine", "3500 Pound/800 Log Fine", "Dishonorable Discharge"],
+            "Murder": ["1500 Pound Fine", "3000 Pound/1500 Log Fine", "Dishonorable Discharge"],
+            "General Theft": ["2000 Pound Fine", "3000 Pound/800 Log Fine", "Dishonorable Discharge"],
+            "Bounty Theft": ["2000 Pound Fine", "3000 Pound/350 Iron Fine", "Dishonorable Discharge"],
+            "Insubordination": ["250 Iron Ingots", "DD (2 Week Penal)", "Dishonorable Discharge"],
+            "Improper Hat/Mask": ["2500 Pound Fine", "300 Pine Logs", "600 Pine Logs", "Dishonorable Discharge"],
+            "Improper Behavior": ["2500 Pound Fine", "300 Pine Logs", "600 Pine Logs", "Dishonorable Discharge"],
+            "Disrespect": ["1500 Pound Fine", "3000 Pound/100 Iron Fine", "600 Pine Logs", "Dishonorable Discharge"],
+            "Intent": ["1500 Pound Fine", "3000 Pound/100 Iron Fine", "600 Pine Logs", "Dishonorable Discharge"]
+        }
+    };
+
+    function calculateFine() {
+        const rank = document.getElementById("rank").value;
+        const offense = document.getElementById("offense").value;
+        const offenseCount = document.getElementById("offenseCount").value;
+        const fine = fines[rank][offense][offenseCount - 1] || "No fine available";
+
+        document.getElementById("result").innerText = `Fine for ${rank}, ${offense}, ${offenseCount} is: ${fine}`;
+    }
+</script>
+
+</body>
+</html>
+
