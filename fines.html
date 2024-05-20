@@ -222,15 +222,16 @@
     }
 
     function changeSecondaryColor() {
-        const color = document.getElementById("secondaryColorInput").value;
-        document.documentElement.style.setProperty('--secondary-color', color);
-        document.querySelectorAll('h1, h2, #result, button').forEach(element => {
-            element.style.color = color;
-        });
-        document.querySelectorAll('button').forEach(button => {
-            button.style.backgroundColor = color;
-        });
-    }
+    const color = document.getElementById("secondaryColorInput").value;
+    document.documentElement.style.setProperty('--secondary-color', color);
+    document.querySelectorAll('h1, h2, #result').forEach(element => {
+        element.style.color = color;
+    });
+    document.querySelectorAll('button').forEach(button => {
+        button.style.backgroundColor = color;
+        button.style.color = "#000000"; // Set text color to black
+    });
+}
 </script>
 
 </body>
