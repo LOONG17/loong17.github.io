@@ -14,7 +14,10 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            flex-direction: column;
+        }
+
+        .main-container {
+            display: flex;
         }
 
         .container {
@@ -24,7 +27,7 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
             max-width: 400px;
             width: 100%;
-            margin-bottom: 20px;
+            margin-right: 20px;
         }
 
         h1 {
@@ -68,89 +71,93 @@
             color: #f44336;
         }
 
-        .indicator {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .indicator img {
-            margin-right: 10px;
-        }
-
         .secondary-color-container {
             background-color: #1e1e1e;
-            padding: 20px;
+            padding: 10px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            max-width: 400px;
+            max-width: 200px;
             width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .secondary-color-container h2 {
             text-align: center;
+            font-size: 16px;
             color: #f44336;
+            margin-bottom: 10px;
         }
 
         #secondaryColorInput {
             background-color: #333333;
             color: #ffffff;
         }
+
+        .indicator {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .indicator img {
+            max-width: 100%;
+        }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <h1>MFP Fine Calculator</h1>
+<div class="main-container">
+    <div class="container">
+        <h1>MFP Fine Calculator</h1>
 
-    <form id="fineCalculator">
-        <label for="rank">Rank:</label>
-        <select id="rank">
-            <option value="Private - CPL">Private - CPL</option>
-            <option value="SGT - SSGT">SGT - SSGT</option>
-            <option value="WO (+CCSG)">WO (+CCSG)</option>
-        </select>
+        <form id="fineCalculator">
+            <label for="rank">Rank:</label>
+            <select id="rank">
+                <option value="Private - CPL">Private - CPL</option>
+                <option value="SGT - SSGT">SGT - SSGT</option>
+                <option value="WO (+CCSG)">WO (+CCSG)</option>
+            </select>
 
-        <label for="offense">Offense:</label>
-        <select id="offense">
-            <option value="Treason">Treason</option>
-            <option value="Conspiracy">Conspiracy</option>
-            <option value="Gunrunning">Gunrunning</option>
-            <option value="Murder & Looting">Murder & Looting</option>
-            <option value="Murder">Murder</option>
-            <option value="General Theft">General Theft</option>
-            <option value="Bounty Theft">Bounty Theft</option>
-            <option value="Insubordination">Insubordination</option>
-            <option value="Improper Hat/Mask">Improper Hat/Mask</option>
-            <option value="Improper Behavior">Improper Behavior</option>
-            <option value="Disrespect">Disrespect</option>
-            <option value="Intent">Intent</option>
-        </select>
+            <label for="offense">Offense:</label>
+            <select id="offense">
+                <option value="Treason">Treason</option>
+                <option value="Conspiracy">Conspiracy</option>
+                <option value="Gunrunning">Gunrunning</option>
+                <option value="Murder & Looting">Murder & Looting</option>
+                <option value="Murder">Murder</option>
+                <option value="General Theft">General Theft</option>
+                <option value="Bounty Theft">Bounty Theft</option>
+                <option value="Insubordination">Insubordination</option>
+                <option value="Improper Hat/Mask">Improper Hat/Mask</option>
+                <option value="Improper Behavior">Improper Behavior</option>
+                <option value="Disrespect">Disrespect</option>
+                <option value="Intent">Intent</option>
+            </select>
 
-        <label for="offenseCount">Offense Count:</label>
-        <select id="offenseCount">
-            <option value="1">First Offense</option>
-            <option value="2">Second Offense</option>
-            <option value="3">Third Offense</option>
-        </select>
+            <label for="offenseCount">Offense Count:</label>
+            <select id="offenseCount">
+                <option value="1">First Offense</option>
+                <option value="2">Second Offense</option>
+                <option value="3">Third Offense</option>
+            </select>
 
-        <button type="button" onclick="calculateFine()">Calculate Fine</button>
-    </form>
+            <button type="button" onclick="calculateFine()">Calculate Fine</button>
+        </form>
 
-    <h2 id="result"></h2>
-</div>
+        <h2 id="result"></h2>
+    </div>
 
-<div class="indicator">
-    <span>Due to complaints:</span>
-</div>
-<div class="image-container">
-    <img src="siteimages/image11.png" alt="Indicator Image" width="100%">
-</div>
-<div class="secondary-color-container">
-    <h2>You can now change the secondary color</h2>
-    <label for="secondaryColorInput">Enter HEX code:</label>
-    <input type="text" id="secondaryColorInput" placeholder="#f44336">
-    <button type="button" onclick="changeSecondaryColor()">Apply Color</button>
+    <div class="secondary-color-container">
+        <div class="indicator">
+            <span>Due to complaints:</span>
+            <img src="siteimages/image11.png" alt="Indicator Image">
+        </div>
+        <h2>You can now change the secondary color</h2>
+        <label for="secondaryColorInput">Enter HEX code:</label>
+        <input type="text" id="secondaryColorInput" placeholder="#f44336">
+        <button type="button" onclick="changeSecondaryColor()">Apply Color</button>
+    </div>
 </div>
 
 <script>
@@ -224,3 +231,4 @@
 
 </body>
 </html>
+
