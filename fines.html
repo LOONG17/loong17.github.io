@@ -14,6 +14,7 @@
             align-items: center;
             height: 100vh;
             margin: 0;
+            flex-direction: column;
         }
 
         .container {
@@ -23,6 +24,7 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
             max-width: 400px;
             width: 100%;
+            margin-bottom: 20px;
         }
 
         h1 {
@@ -30,20 +32,20 @@
             color: #f44336;
         }
 
-        label, select, button {
+        label, select, button, input {
             display: block;
             width: 100%;
             margin-bottom: 15px;
         }
 
-        select, button {
+        select, button, input {
             padding: 10px;
             border-radius: 5px;
             border: none;
             font-size: 16px;
         }
 
-        select {
+        select, input {
             background-color: #333333;
             color: #ffffff;
         }
@@ -64,6 +66,35 @@
             font-size: 18px;
             margin-top: 20px;
             color: #f44336;
+        }
+
+        .indicator {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .indicator img {
+            margin-right: 10px;
+        }
+
+        .secondary-color-container {
+            background-color: #1e1e1e;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .secondary-color-container h2 {
+            text-align: center;
+            color: #f44336;
+        }
+
+        #secondaryColorInput {
+            background-color: #333333;
+            color: #ffffff;
         }
     </style>
 </head>
@@ -107,6 +138,18 @@
     </form>
 
     <h2 id="result"></h2>
+</div>
+
+<div class="indicator">
+    <img src="siteimages/image11.png" alt="Indicator Image" width="50">
+    <span>Due to complaints: you can now select the secondary color</span>
+</div>
+
+<div class="secondary-color-container">
+    <h2>Change Secondary Color</h2>
+    <label for="secondaryColorInput">Enter HEX code:</label>
+    <input type="text" id="secondaryColorInput" placeholder="#f44336">
+    <button type="button" onclick="changeSecondaryColor()">Apply Color</button>
 </div>
 
 <script>
@@ -165,8 +208,18 @@
 
         document.getElementById("result").innerText = `Fine for ${rank}, ${offense}, ${offenseCount} is: ${fine}`;
     }
+
+    function changeSecondaryColor() {
+        const color = document.getElementById("secondaryColorInput").value;
+        document.documentElement.style.setProperty('--secondary-color', color);
+        document.querySelectorAll('h1, h2, #result, button').forEach(element => {
+            element.style.color = color;
+        });
+        document.querySelectorAll('button').forEach(button => {
+            button.style.backgroundColor = color;
+        });
+    }
 </script>
 
 </body>
 </html>
-
