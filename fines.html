@@ -221,6 +221,9 @@
         document.getElementById("result").innerText = `Fine for ${rank}, ${offense}, ${offenseCount} is: ${fine}`;
     }
 
+    window.addEventListener('load', applySavedColor);
+
+
     function changeSecondaryColor() {
     const color = document.getElementById("secondaryColorInput").value;
     document.documentElement.style.setProperty('--secondary-color', color);
@@ -229,9 +232,35 @@
     });
     document.querySelectorAll('button').forEach(button => {
         button.style.backgroundColor = color;
-        button.style.color = "#000000"; // Set text color to black
+        button.style.color = "#000000"; 
     });
-}
+    saveColorToLocalStorage(color); 
+    }
+
+    function saveColorToLocalStorage(color) {
+    localStorage.setItem('secondaryColor', color);
+
+    }
+
+    function loadColorFromLocalStorage() {
+    return localStorage.getItem('secondaryColor');
+    
+    }
+
+    function applySavedColor() {
+    const savedColor = loadColorFromLocalStorage();
+    if (savedColor) {
+        document.getElementById("secondaryColorInput").value = savedColor;
+        changeSecondaryColor(); 
+    }
+
+    }
+
+    document.querySelectorAll('button').forEach(button => {
+        button.style.backgroundColor = color;
+        button.style.color = "#000000"; 
+    });
+
 </script>
 
 </body>
