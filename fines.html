@@ -217,7 +217,7 @@
         const rank = document.getElementById("rank").value;
         const offense = document.getElementById("offense").value;
         const offenseCount = document.getElementById("offenseCount").value;
-        const fine = fines[rank][offense][offenseCount - 1] || "No fine available";
+        const fine = fines[rank][offense][offenseCount - 1] || "Bar";
 
         document.getElementById("result").innerText = `Fine for ${rank}, ${offense}, ${offenseCount} is: ${fine}`;
     }
