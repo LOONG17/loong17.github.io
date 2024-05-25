@@ -260,9 +260,9 @@
 function redirectToMobile() {
     const userAgent = navigator.userAgent || navigator.vendor || window.opera;
     if (/android/i.test(userAgent)) {
-        window.location.href = "https://loong17.github.io/phoneversion.html";
+        window.location.href = "phoneversion.html";
     } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-        window.location.href = "https://loong17.github.io/phoneversion.html";
+        window.location.href = "phoneversion.html";
     }
 }
 
