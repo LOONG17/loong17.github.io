@@ -14,15 +14,11 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            flex-direction: column;
-            padding: 20px;
         }
 
         .main-container {
             display: flex;
-            flex-direction: column;
-            width: 100%;
-            max-width: 800px;
+            transform: scale(1.70);
         }
 
         .container {
@@ -30,8 +26,9 @@
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            max-width: 400px;
             width: 100%;
-            margin-bottom: 20px;
+            margin-right: 20px;
         }
 
         h1 {
@@ -69,19 +66,20 @@
         }
 
         #result {
-            font-size: 14px;
-            margin-top: 10px;
+            font-size: 11px;
+            margin-top: 11px;
             color: #f44336;
             height: 20px;
-            width: 100%;
+            width: 370px;
             overflow: hidden;
         }
 
         .secondary-color-container {
             background-color: #1e1e1e;
-            padding: 20px;
+            padding: 10px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            max-width: 200px;
             width: 100%;
             display: flex;
             flex-direction: column;
@@ -233,9 +231,9 @@
         });
         document.querySelectorAll('button').forEach(button => {
             button.style.backgroundColor = color;
-            button.style.color = "#000000";
+            button.style.color = "#000000"; 
         });
-        saveColorToLocalStorage(color);
+        saveColorToLocalStorage(color); 
     }
 
     function saveColorToLocalStorage(color) {
@@ -250,11 +248,24 @@
         const savedColor = loadColorFromLocalStorage();
         if (savedColor) {
             document.getElementById("secondaryColorInput").value = savedColor;
-            changeSecondaryColor();
+            changeSecondaryColor(); 
         }
     }
+
+    document.querySelectorAll('button').forEach(button => {
+        button.style.backgroundColor = color;
+        button.style.color = "#000000"; 
+    });
+
+    // Mobile detection and redirection
+    function redirectToMobile() {
+        if (/Mobi|Android/i.test(navigator.userAgent)) {
+            window.location.href = "https://loong17.github.io/phoneversion.html";
+        }
+    }
+
+    redirectToMobile();
 </script>
 
 </body>
 </html>
-
