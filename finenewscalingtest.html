@@ -14,21 +14,24 @@
             align-items: center;
             height: 100vh;
             margin: 0;
+            flex-direction: column;
+            padding: 20px;
         }
 
         .main-container {
             display: flex;
-            transform: scale(100%);
+            flex-direction: column;
+            width: 100%;
+            max-width: 800px;
         }
 
         .container {
             background-color: #1e1e1e;
-            padding: 5%;
+            padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            max-width: 100%;
             width: 100%;
-            margin-right: 5%;
+            margin-bottom: 20px;
         }
 
         h1 {
@@ -39,14 +42,14 @@
         label, select, button, input {
             display: block;
             width: 100%;
-            margin-bottom: 5%;
+            margin-bottom: 15px;
         }
 
         select, button, input {
-            padding: 2.5%;
+            padding: 10px;
             border-radius: 5px;
             border: none;
-            font-size: 1em;
+            font-size: 16px;
         }
 
         select, input {
@@ -66,8 +69,8 @@
         }
 
         #result {
-            font-size: 0.9em;
-            margin-top: 5%;
+            font-size: 14px;
+            margin-top: 10px;
             color: #f44336;
             height: 20px;
             width: 100%;
@@ -76,10 +79,9 @@
 
         .secondary-color-container {
             background-color: #1e1e1e;
-            padding: 5%;
+            padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            max-width: 100%;
             width: 100%;
             display: flex;
             flex-direction: column;
@@ -88,9 +90,9 @@
 
         .secondary-color-container h2 {
             text-align: center;
-            font-size: 1em;
+            font-size: 16px;
             color: #f44336;
-            margin-bottom: 5%;
+            margin-bottom: 10px;
         }
 
         #secondaryColorInput {
@@ -100,7 +102,7 @@
 
         .indicator {
             text-align: center;
-            margin-bottom: 5%;
+            margin-bottom: 10px;
         }
 
         .indicator img {
@@ -206,7 +208,7 @@
             "Bounty Theft": ["2000 Pound Fine", "3000 Pound/350 Iron Fine", "Dishonorable Discharge"],
             "Insubordination": ["250 Iron Ingots", "DD (2 Week Penal)", "Dishonorable Discharge"],
             "Improper Hat/Mask": ["2500 Pound Fine", "300 Pine Logs", "600 Pine Logs", "Dishonorable Discharge"],
-            "Improper Behavior": ["2500 Pound Fine", "Improper Behavior": ["2500 Pound Fine", "300 Pine Logs", "600 Pine Logs", "Dishonorable Discharge"],
+            "Improper Behavior": ["2500 Pound Fine", "300 Pine Logs", "600 Pine Logs", "Dishonorable Discharge"],
             "Disrespect": ["1500 Pound Fine", "3000 Pound/100 Iron Fine", "600 Pine Logs", "Dishonorable Discharge"],
             "Intent": ["1500 Pound Fine", "3000 Pound/100 Iron Fine", "600 Pine Logs", "Dishonorable Discharge"]
         }
@@ -231,9 +233,9 @@
         });
         document.querySelectorAll('button').forEach(button => {
             button.style.backgroundColor = color;
-            button.style.color = "#000000"; 
+            button.style.color = "#000000";
         });
-        saveColorToLocalStorage(color); 
+        saveColorToLocalStorage(color);
     }
 
     function saveColorToLocalStorage(color) {
@@ -248,7 +250,7 @@
         const savedColor = loadColorFromLocalStorage();
         if (savedColor) {
             document.getElementById("secondaryColorInput").value = savedColor;
-            changeSecondaryColor(); 
+            changeSecondaryColor();
         }
     }
 </script>
