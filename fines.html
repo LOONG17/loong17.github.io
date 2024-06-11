@@ -66,13 +66,13 @@
         }
 
         #result {
-   		font-size: 11px;
-  		margin-top: 11px;
-    		color: #f44336;
-    		height: 20px;
-		width: 370px;
-   		overflow: hidden;
-	}
+            font-size: 11px;
+            margin-top: 11px;
+            color: #f44336;
+            height: 20px;
+            width: 370px;
+            overflow: hidden;
+        }
 
 
         .secondary-color-container {
@@ -127,13 +127,12 @@
             <select id="offense">
                 <option value="Treason">Treason</option>
                 <option value="Conspiracy">Conspiracy</option>
-                <option value="Gunrunning">Gunrunning</option>
-                <option value="Murder & Looting">Murder & Looting</option>
+                <option value="Gunnunning">Gunnunning</option>
                 <option value="Murder">Murder</option>
                 <option value="General Theft">General Theft</option>
                 <option value="Bounty Theft">Bounty Theft</option>
                 <option value="Insubordination">Insubordination</option>
-                <option value="Improper Hat/Mask">Improper Hat/Mask</option>
+                <option value="Improper Uniform">Improper Uniform</option>
                 <option value="Improper Behavior">Improper Behavior</option>
                 <option value="Disrespect">Disrespect</option>
                 <option value="Intent">Intent</option>
@@ -144,7 +143,6 @@
                 <option value="1">First Offense</option>
                 <option value="2">Second Offense</option>
                 <option value="3">Third Offense</option>
-		<option value="4">Fourth Offense</option>
             </select>
 
             <button type="button" onclick="calculateFine()">Calculate Fine</button>
@@ -170,43 +168,37 @@
         "Private - CPL": {
             "Treason": ["Dishonorable Discharge", "Bar"],
             "Conspiracy": ["Dishonorable Discharge", "Bar"],
-            "Gunrunning": ["Dishonorable Discharge", "Bar"],
-            "Murder & Looting": ["800 Pound Fine", "1000 Pound/Log Fine", "Dishonorable Discharge"],
+            "Gunnunning": ["Dishonorable Discharge", "Bar"],
             "Murder": ["400 Pound Fine", "600 Pound/Log Fine", "Dishonorable Discharge"],
-            "General Theft": ["400 Pound Fine", "600 Pound/Log Fine", "Dishonorable Discharge"],
+            "General Theft": ["200 Pound Fine", "300 Pound/Log Fine", "Dishonorable Discharge"],
             "Bounty Theft": ["400 Pound Fine", "600 Pound/Log Fine", "Dishonorable Discharge"],
             "Insubordination": ["50 Iron Ingots", "General Discharge", "Dishonorable Discharge"],
-            "Improper Hat/Mask": ["300 Pound Fine", "400 Pine Logs", "General Discharge", "Dishonorable Discharge"],
-            "Improper Behavior": ["300 Pound Fine", "400 Pine Logs", "General Discharge", "Dishonorable Discharge"],
+            "Improper Uniform": ["300 Pound Fine", "400 Pine Logs", "General Discharge", "Dishonorable Discharge"],
+            "Improper Behavior": ["400 Pound Fine", "400 Pine Logs", "General Discharge", "Dishonorable Discharge"],
             "Disrespect": ["300 Pound Fine", "200 Pine Logs", "General Discharge", "Dishonorable Discharge"],
             "Intent": ["300 Pound Fine", "200 Pine Logs", "General Discharge", "Dishonorable Discharge"]
         },
         "SGT - SSGT": {
             "Treason": ["Bar"],
             "Conspiracy": ["Dishonorable Discharge", "Bar"],
-            "Gunrunning": ["Dishonorable Discharge", "Bar"],
-            "Leeching": ["Dishonorable Discharge"],
-            "Murder & Looting": ["1500 Pound Fine", "2500 Pound/1200 Log Fine", "Dishonorable Discharge"],
+            "Gunnunning": ["Dishonorable Discharge", "Bar"],
             "Murder": ["1000 Pound Fine", "2000 Pound/1000 Log Fine", "Dishonorable Discharge"],
-            "General Theft": ["1000 Pound Fine", "1500 Pound/800 Log Fine", "Dishonorable Discharge"],
-            "Bounty Theft": ["1000 Pound Fine", "1500 Pound/800 Log Fine", "Dishonorable Discharge"],
+            "General Theft": ["500 Pound Fine", "1000 Pound/500 Log Fine", "Dishonorable Discharge"],
+            "Bounty Theft": ["1500 Pound Fine", "2000 Pound/800 Log Fine", "Dishonorable Discharge"],
             "Insubordination": ["100 Iron Ingots", "DD (2 Week Penal)", "Dishonorable Discharge"],
-            "Improper Hat/Mask": ["600 Pound Fine", "600 Pine Logs", "General Discharge", "Dishonorable Discharge"],
-            "Improper Behavior": ["600 Pound Fine", "600 Pine Logs", "General Discharge", "Dishonorable Discharge"],
-            "Disrespect": ["600 Pound Fine", "600 Pine Logs", "General Discharge", "Dishonorable Discharge"],
-            "Intent": ["600 Pound Fine", "600 Pine Logs", "General Discharge", "Dishonorable Discharge"]
+            "Improper Uniform": ["500 Pound Fine", "600 Pine Logs", "General Discharge", "Dishonorable Discharge"],
+            "Improper Behavior": ["800 Pound Fine", "800 Pine Logs", "General Discharge", "Dishonorable Discharge"],
+            "Disrespect": ["500 Pound Fine", "600 Pine Logs", "General Discharge", "Dishonorable Discharge"],
         },
         "WO (+CCSG)": {
             "Treason": ["Bar"],
             "Conspiracy": ["Dishonorable Discharge", "Bar"],
-            "Gunrunning": ["Dishonorable Discharge", "Bar"],
-            "Leeching": ["Dishonorable Discharge"],
-            "Murder & Looting": ["2250 Pound Fine", "3500 Pound/800 Log Fine", "Dishonorable Discharge"],
-            "Murder": ["1500 Pound Fine", "3000 Pound/1500 Log Fine", "Dishonorable Discharge"],
-            "General Theft": ["2000 Pound Fine", "3000 Pound/800 Log Fine", "Dishonorable Discharge"],
+            "Gunnunning": ["Dishonorable Discharge", "Bar"],
+            "Murder": ["1500 Pound Fine", "3000 Pound/500 Iron Fine", "Dishonorable Discharge"],
+            "General Theft": ["750 Pound Fine", "1500 Pound/250 Iron Fine", "Dishonorable Discharge"],
             "Bounty Theft": ["2000 Pound Fine", "3000 Pound/350 Iron Fine", "Dishonorable Discharge"],
             "Insubordination": ["250 Iron Ingots", "DD (2 Week Penal)", "Dishonorable Discharge"],
-            "Improper Hat/Mask": ["2500 Pound Fine", "300 Pine Logs", "600 Pine Logs", "Dishonorable Discharge"],
+            "Improper Uniform": ["1500 Pound Fine", "100 Iron Ingots", "600 Pine Logs", "Dishonorable Discharge"],
             "Improper Behavior": ["2500 Pound Fine", "300 Pine Logs", "600 Pine Logs", "Dishonorable Discharge"],
             "Disrespect": ["1500 Pound Fine", "3000 Pound/100 Iron Fine", "600 Pine Logs", "Dishonorable Discharge"],
             "Intent": ["1500 Pound Fine", "3000 Pound/100 Iron Fine", "600 Pine Logs", "Dishonorable Discharge"]
@@ -224,37 +216,33 @@
 
     window.addEventListener('load', applySavedColor);
 
-
     function changeSecondaryColor() {
-    const color = document.getElementById("secondaryColorInput").value;
-    document.documentElement.style.setProperty('--secondary-color', color);
-    document.querySelectorAll('h1, h2, #result').forEach(element => {
-        element.style.color = color;
-    });
-    document.querySelectorAll('button').forEach(button => {
-        button.style.backgroundColor = color;
-        button.style.color = "#000000"; 
-    });
-    saveColorToLocalStorage(color); 
+        const color = document.getElementById("secondaryColorInput").value;
+        document.documentElement.style.setProperty('--secondary-color', color);
+        document.querySelectorAll('h1, h2, #result').forEach(element => {
+            element.style.color = color;
+        });
+        document.querySelectorAll('button').forEach(button => {
+            button.style.backgroundColor = color;
+            button.style.color = "#000000"; 
+        });
+        saveColorToLocalStorage(color); 
     }
 
     function saveColorToLocalStorage(color) {
-    localStorage.setItem('secondaryColor', color);
-
+        localStorage.setItem('secondaryColor', color);
     }
 
     function loadColorFromLocalStorage() {
-    return localStorage.getItem('secondaryColor');
-    
+        return localStorage.getItem('secondaryColor');
     }
 
     function applySavedColor() {
-    const savedColor = loadColorFromLocalStorage();
-    if (savedColor) {
-        document.getElementById("secondaryColorInput").value = savedColor;
-        changeSecondaryColor(); 
-    }
-
+        const savedColor = loadColorFromLocalStorage();
+        if (savedColor) {
+            document.getElementById("secondaryColorInput").value = savedColor;
+            changeSecondaryColor(); 
+        }
     }
 
     document.querySelectorAll('button').forEach(button => {
