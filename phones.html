@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Browser Detection</title>
+</head>
+<body>
+    <script>
+        function isMobile() {
+            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            
+            if (/iPhone|iPad|iPod/i.test(userAgent)) {
+                return true;
+            }
+            
+            if (/android/i.test(userAgent)) {
+                return true;
+            }
+            
+            return /Mobile|Tablet|Opera Mini|IEMobile|Mobile Safari|Fennec/i.test(userAgent);
+        }
+
+        if (isMobile()) {
+            alert("You are using a mobile browser!");
+        } else {
+            alert("You are using a desktop browser!");
+        }
+    </script>
+</body>
+</html>
