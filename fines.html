@@ -165,6 +165,20 @@
 </div>
 
 <script>
+     function isMobile() {
+            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            
+            if (/iPhone|iPad|iPod/i.test(userAgent)) {
+                return true;
+            }
+            
+            if (/android/i.test(userAgent)) {
+                return true;
+            }
+            
+            return /Mobile|Tablet|Opera Mini|IEMobile|Mobile Safari|Fennec/i.test(userAgent);
+        }
+    
     const fines = {
         "Private - CPL": {
             "Treason": ["Dishonorable Discharge", "Bar"],
