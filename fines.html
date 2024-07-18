@@ -178,6 +178,9 @@
             
             return /Mobile|Tablet|Opera Mini|IEMobile|Mobile Safari|Fennec/i.test(userAgent);
         }
+     if (isMobile()) {
+             window.location.href = "phoneversion.html";
+        }
     
     const fines = {
         "Private - CPL": {
