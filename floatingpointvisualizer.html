@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Floating Point Math Visualization</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    #container {
+      display: flex;
+      flex-direction: column;
+      max-width: 600px;
+    }
+    label, input, button {
+      margin: 5px 0;
+    }
+    .output {
+      margin: 10px 0;
+      padding: 10px;
+      background: #f4f4f4;
+      border: 1px solid #ddd;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <h1>Floating Point Visualization</h1>
+    <label for="floatInput">Enter a float value:</label>
+    <input type="number" id="floatInput" step="any" value="0">
+    <button id="convertBtn">Convert to IEEE-754</button>
+    <div class="output">
+      <p id="binaryOutput">Binary Representation: </p>
+      <p id="componentsOutput">Components: </p>
+      <p id="formulaOutput">Value Formula: </p>
+    </div>
+  </div>
+  
+  <script>
+    // Converts a JavaScript float to a 32-bit binary string (IEEE-754)
+    function floatToBinaryString(f) {
+      const buffer = new ArrayBuffer(4);
+      const view = new DataView(buffer);
+      view.setFloat32(0, f, false); // big-endian
+      const int = view.getUint32(0, false);
+      return int.toString(2).padStart(32, '0');
+    }
+
+    // Parses a 32-bit float into its IEEE-754 components
+    function parseIEEE754(f) {
+      const binStr = floatToBinaryString(f);
+      const sign = binStr.charAt(0);
+      const exponentBits = binStr.substr(1, 8);
+      const fractionBits = binStr.substr(9);
+      
+      const exponent = parseInt(exponentBits, 2);
+      let fraction = 0;
+      for (let i = 0; i < fractionBits.length; i++) {
+        if (fractionBits[i] === '1') {
+          fraction += Math.pow(2, -(i + 1));
+        }
+      }
+      
+      let value;
+      if (exponent === 0) {
+        // Denormalized value
+        value = fraction * Math.pow(2, -126);
+      } else if (exponent === 255) {
+        // Infinity or NaN
+        value = fraction === 0 ? Infinity : NaN;
+      } else {
+        // Normalized value: 1.fraction * 2^(exponent-127)
+        value = (1 + fraction) * Math.pow(2, exponent - 127);
+      }
+      
+      if (sign === '1' && value !== 0) {
+        value = -value;
+      }
+      
+      return {
+        binStr,
+        sign,
+        exponentBits,
+        fractionBits,
+        exponent,
+        fraction,
+        value
+      };
+    }
+
+    // Event listener to update the UI on button click
+    document.getElementById('convertBtn').addEventListener('click', () => {
+      const inputVal = parseFloat(document.getElementById('floatInput').value);
+      const result = parseIEEE754(inputVal);
+      
+      document.getElementById('binaryOutput').textContent =
+        "Binary Representation: " + result.binStr;
+      document.getElementById('componentsOutput').textContent =
+        "Sign: " + result.sign +
+        ", Exponent: " + result.exponentBits + " (" + result.exponent + ")" +
+        ", Fraction: " + result.fractionBits;
+      
+      document.getElementById('formulaOutput').textContent =
+        "Calculated Value: " + result.value +
+        " (Formula: " + (result.sign === '1' ? "-" : "") +
+        "(1 + " + result.fraction.toFixed(5) + ") * 2^(" + (result.exponent - 127) + "))";
+    });
+  </script>
+</body>
+</html>
